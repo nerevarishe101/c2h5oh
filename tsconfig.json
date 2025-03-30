@@ -5,6 +5,9 @@
   "references": [
     {
       "path": "./packages/utils"
+    },
+    {
+      "path": "./packages/react-auth"
     }
   ]
 }
