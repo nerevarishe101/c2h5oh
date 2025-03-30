@@ -17,7 +17,7 @@ export interface CreateAxiosClientOptions {
 /**
  * Create Axios instance with already configured refresh logic
  * @param options - options to configure axios client
- * @param config - axios config? to configure axios instance
+ * @param config - axios config to configure axios instance
  */
 export const createAxiosClient = (
   options: CreateAxiosClientOptions,
