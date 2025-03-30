@@ -1,6 +1,12 @@
 import { makeAutoObservable } from 'mobx';
 
-export class AuthStoreClass<PayloadModel extends Record<string, unknown>> {
+export interface MinimalAuthStore {
+  isAuth: boolean;
+}
+
+export class AuthStoreClass<PayloadModel extends Record<string, unknown>>
+  implements MinimalAuthStore
+{
   tokenPayload: PayloadModel | null = null;
 
   constructor() {
