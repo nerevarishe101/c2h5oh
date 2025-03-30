@@ -4,8 +4,19 @@ export interface MinimalAuthStore {
   isAuth: boolean;
 }
 
+export interface MinimalAuthStoreClearAction {
+  clear: () => void;
+}
+
+export interface MinimalAuthStoreSetTokenPayloadAction {
+  setTokenPayload: (token: string | null) => void;
+}
+
 export class AuthStoreClass<PayloadModel extends Record<string, unknown>>
-  implements MinimalAuthStore
+  implements
+    MinimalAuthStore,
+    MinimalAuthStoreClearAction,
+    MinimalAuthStoreSetTokenPayloadAction
 {
   tokenPayload: PayloadModel | null = null;
 
