@@ -2,14 +2,14 @@ import { observer } from 'mobx-react-lite';
 import { FC, useEffect } from 'react';
 import { Outlet } from 'react-router';
 
-import { MinimalAuthStoreClearAction } from '../stores';
+import { MinimalAuthStoreData } from '../stores';
 
 interface AuthTabSyncWithBroadcastChanelProps {
-  authStore: MinimalAuthStoreClearAction;
+  authStore: MinimalAuthStoreData;
 }
 
 /**
- * Sync auth state between tabs. If we get logout message,
+ * Sync auth state between tabs. If we get a logout message,
  * clear auth store in all tabs.
  */
 export const AuthTabSyncWithBroadcastChanel: FC<AuthTabSyncWithBroadcastChanelProps> =
@@ -19,6 +19,7 @@ export const AuthTabSyncWithBroadcastChanel: FC<AuthTabSyncWithBroadcastChanelPr
         switch (event.data) {
           // TODO: Move to broadcast chanel lib
           case 'login':
+            props.authStore.setIsAuth(true);
             break;
           // TODO: Move to broadcast chanel lib
           case 'logout':

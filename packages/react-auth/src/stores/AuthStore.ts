@@ -1,11 +1,12 @@
 import { makeAutoObservable } from 'mobx';
 
-export interface MinimalAuthStore {
-  isAuth: boolean;
-}
-
 export interface MinimalAuthStoreClearAction {
   clear: () => void;
+}
+
+export interface MinimalAuthStoreData extends MinimalAuthStoreClearAction {
+  isAuth: boolean;
+  setIsAuth: (status: boolean) => void;
 }
 
 export interface MinimalAuthStoreSetTokenPayloadAction {
@@ -13,11 +14,9 @@ export interface MinimalAuthStoreSetTokenPayloadAction {
 }
 
 export class AuthStoreClass<PayloadModel extends Record<string, unknown>>
-  implements
-    MinimalAuthStore,
-    MinimalAuthStoreClearAction,
-    MinimalAuthStoreSetTokenPayloadAction
+  implements MinimalAuthStoreData, MinimalAuthStoreSetTokenPayloadAction
 {
+  isAuth = false;
   tokenPayload: PayloadModel | null = null;
 
   constructor() {
@@ -38,9 +37,9 @@ export class AuthStoreClass<PayloadModel extends Record<string, unknown>>
     return JSON.parse(jsonPayload) as PayloadModel;
   }
 
-  get isAuth(): boolean {
-    return !!this.tokenPayload;
-  }
+  setIsAuth = (status: boolean): void => {
+    this.isAuth = status;
+  };
 
   setTokenPayload = (token: string | null): void => {
     if (token) {
@@ -51,6 +50,7 @@ export class AuthStoreClass<PayloadModel extends Record<string, unknown>>
   };
 
   clear = (): void => {
+    this.setIsAuth(false);
     this.setTokenPayload(null);
   };
 }

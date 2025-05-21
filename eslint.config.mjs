@@ -1,6 +1,7 @@
 import nx from '@nx/eslint-plugin';
 import imports from 'eslint-plugin-import';
 import sortExports from 'eslint-plugin-sort-exports';
+import unusedImports from 'eslint-plugin-unused-imports';
 
 // eslint-disable-next-line import/no-default-export
 export default [
@@ -44,7 +45,7 @@ export default [
     ],
     plugins: {
       import: imports,
-      'sort-exports': sortExports,
+      'unused-imports': unusedImports,
     },
     // Override or add rules here
     rules: {
@@ -69,7 +70,15 @@ export default [
       ],
       'import/no-default-export': 'error',
       'import/prefer-default-export': 'off',
-
+      'unused-imports/no-unused-imports': 'error',
+    },
+  },
+  {
+    files: ['**/index.ts', '**/index.js'],
+    plugins: {
+      'sort-exports': sortExports,
+    },
+    rules: {
       //   Настройка экспортов
       'sort-exports/sort-exports': [
         'error',

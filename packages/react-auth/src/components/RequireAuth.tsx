@@ -2,10 +2,10 @@ import { observer } from 'mobx-react-lite';
 import { FC } from 'react';
 import { Navigate, Outlet, useLocation, Location } from 'react-router';
 
-import { MinimalAuthStore } from '../stores';
+import { MinimalAuthStoreData } from '../stores';
 
 interface RequireAuthProps {
-  authStore: MinimalAuthStore;
+  authStore: MinimalAuthStoreData;
   signInRoute: string;
 }
 
