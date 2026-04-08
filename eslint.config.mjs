@@ -1,6 +1,4 @@
 import nx from '@nx/eslint-plugin';
-import imports from 'eslint-plugin-import';
-import sortExports from 'eslint-plugin-sort-exports';
 
 // eslint-disable-next-line import/no-default-export
 export default [
@@ -42,10 +40,7 @@ export default [
       '**/*.cjs',
       '**/*.mjs',
     ],
-    plugins: {
-      import: imports,
-      'sort-exports': sortExports,
-    },
+    plugins: {},
     // Override or add rules here
     rules: {
       // Настройка импортов
