@@ -66,7 +66,6 @@ export default [
       '**/*.jsx',
       '**/*.cjs',
       '**/*.mjs',
-      '!**/vite.config.ts',
     ],
     plugins: {
       import: imports,
