@@ -5,6 +5,9 @@ export default [
   ...baseConfig,
   {
     files: ['**/*.json'],
+    languageOptions: {
+      parser: await import('jsonc-eslint-parser'),
+    },
     rules: {
       '@nx/dependency-checks': [
         'error',
@@ -15,9 +18,6 @@ export default [
           ],
         },
       ],
-    },
-    languageOptions: {
-      parser: await import('jsonc-eslint-parser'),
     },
   },
 ];
